@@ -6,3 +6,6 @@ from django.http import HttpResponse
 def home(request):
     context = {'nom':'Ulrich'}
     return render(request,"home/index.html", context)
+
+def contact(request):
+    return render(request, "home/contact.html")

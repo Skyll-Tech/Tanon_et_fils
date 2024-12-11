@@ -1,8 +1,32 @@
 /********** Template CSS **********/
 :root {
-    --primary: #32C36C;
+    --primary: #9027c8; /*   #32C36C   */
     --light: #F6F7F8;
     --dark: #1A2A36;
+}
+
+
+.custom-color{
+    background-color: #9027c8;
+    border-color: #9027c8;
+}
+
+.text-color{
+    color: #9027c8;
+}
+
+.color-bord{
+    border-color: #9027c8;
+}
+.color-bord:hover{
+    background-color: #9027c8;
+    border-color: #9027c8;
+    color: #ffffff;
+}
+
+.icon-color{
+    color: #9027c8;
+
 }
 
 .fw-medium {
