@@ -77,9 +77,18 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
           <a href="{% url "home" %}" class="nav-item nav-link active">Home</a>
-          <a href="{% url 'home' %}#apropos" class="nav-item nav-link">Apropos</a>
+          <a href="{% url 'home' %}#apropos" class="nav-item nav-link">A propos</a>
           <a href="{% url "home" %}#services" class="nav-item nav-link">Services</a>
           <a href="{% url "home" %}#projets" class="nav-item nav-link">Projets</a>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Nos équipements</a>
+            <div class="dropdown-menu bg-light m-0">
+                <a href="#" class="dropdown-item">Produit 1</a>
+                <a href="#" class="dropdown-item">Produit 2</a>
+                <a href="#" class="dropdown-item">Produit 3</a>
+                <a href="#" class="dropdown-item">Produit 4</a>
+            </div>
+        </div>
           <a href="{% url "contact" %}" class="nav-item nav-link">Contacts</a>
         </div>
         <a href="" class="btn btn-primary custom-color rounded-0 py-4 px-lg-5 d-none d-lg-block">Obtenir un devis<i class="fa fa-arrow-right ms-3"></i></a>
@@ -97,7 +106,7 @@
       <div class="container py-5">
         <div class="row g-5">
           <div class="col-lg-3 col-md-6">
-            <h5 class="text-white mb-4">Addresse</h5>
+            <h5 class="text-white mb-4">Adresse</h5>
             <p class="mb-2">
               <i class="fa fa-map-marker-alt me-3"></i>Yaounde-cameroun, Carrefour acassia
             </p>
@@ -116,7 +125,7 @@
           </div>
           <div class="col-lg-3 col-md-6">
             <h5 class="text-white mb-4">Liens rapide</h5>
-            <a class="btn btn-link" href="">Apropos</a>
+            <a class="btn btn-link" href="">A propos</a>
             <a class="btn btn-link" href="">Contacts </a>
             <a class="btn btn-link" href="">Nos Services</a>
             <a class="btn btn-link" href="">Terms & Condition</a>

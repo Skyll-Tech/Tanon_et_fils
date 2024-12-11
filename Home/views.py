@@ -9,3 +9,6 @@ def home(request):
 
 def contact(request):
     return render(request, "home/contact.html")
+
+def produit(request):
+    return render(request, "home/produit.html")
