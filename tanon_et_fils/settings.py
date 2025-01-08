@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Home',
+    'Dashboard',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'home/statics']
+STATICFILES_DIRS = [BASE_DIR / 'home/statics',
+                    BASE_DIR / 'dashboard/statics',]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

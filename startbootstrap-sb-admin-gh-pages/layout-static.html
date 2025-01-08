@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Static Navigation - SB Admin</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Layouts
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Pages
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Static Navigation</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Static Navigation</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p class="mb-0">
+                                    This page is an example of using static navigation. By removing the
+                                    <code>.sb-nav-fixed</code>
+                                    class from the
+                                    <code>body</code>
+                                    , the top navigation and side navigation will become static on scroll. Scroll down this page to see an example.
+                                </p>
+                            </div>
+                        </div> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus non nihil magni dolorem eveniet. Debitis nesciunt rem accusantium, rerum necessitatibus modi obcaecati repudiandae amet dolorem aperiam quibusdam non sapiente suscipit atque placeat id officia commodi natus, nihil mollitia illo qui quidem? Illo perspiciatis quos magni corrupti. Voluptate ipsa corporis ducimus consequatur beatae tempore et odit, esse consequuntur nobis? Hic eos neque placeat dolorum tempore doloribus corporis molestiae ut blanditiis impedit veniam voluptates at nisi natus sint ipsam consectetur, assumenda laboriosam. Soluta quo explicabo tenetur ad totam pariatur dolor at! Consectetur ipsum eum hic rerum eligendi velit exercitationem iusto enim quas impedit in nemo voluptatibus corrupti rem deleniti sapiente eius ea temporibus laudantium, illum commodi? Laudantium minima nihil possimus voluptatibus eum totam perspiciatis est blanditiis, natus expedita animi fuga dolorem maxime asperiores obcaecati fugiat libero optio voluptates? Reiciendis ea nam fugiat nisi assumenda repellendus placeat quae sapiente quia? Vitae suscipit amet debitis et, voluptas aliquam quisquam quis autem praesentium? Cum omnis vitae veniam nostrum facere voluptate non et, in, aperiam eos ex, velit nemo illum. Atque consectetur deleniti repudiandae laborum aliquid fugiat, quidem, accusantium harum adipisci nesciunt eaque exercitationem pariatur consequatur. Vel, eaque aliquid odio qui quaerat quis repellendus molestias laborum repellat aut doloremque velit culpa eius harum ea nemo aliquam ipsa iusto exercitationem sapiente! Tempore enim a, modi qui odit nisi in exercitationem fuga quasi ex iusto suscipit voluptatum deleniti eum facere repellendus odio aut est perferendis quod dignissimos corporis expedita veniam ad. Dicta nihil nemo deleniti molestiae omnis commodi voluptates mollitia recusandae atque placeat, modi unde numquam aliquid, dolor debitis eius voluptas culpa ullam doloremque, animi temporibus necessitatibus aspernatur ducimus! Nesciunt dolor quod, ad perspiciatis eum obcaecati nulla laborum qui aliquid itaque similique, architecto ea placeat rem. Odio optio cupiditate quisquam dolore, aut reprehenderit fugiat consectetur minima, beatae hic consequuntur deserunt dolores sed totam assumenda commodi libero rerum eligendi accusantium quas illum quam. Laboriosam, dolorum cumque debitis molestiae adipisci laudantium quam? Suscipit voluptas neque quo id rem, dolorem doloribus earum similique impedit laudantium. Quam obcaecati illum recusandae natus aperiam harum vitae nostrum, sapiente esse. Repellat, minus et dolores possimus ab maiores error perspiciatis autem deserunt veniam rem quo modi dolorem voluptatem dignissimos nobis ut, reiciendis adipisci, illo culpa expedita sit magnam. Magni officiis illo sequi pariatur fuga magnam sint commodi maiores totam excepturi. Qui tempora at, ipsam quaerat earum ab, doloremque labore recusandae, sunt omnis aut corporis quam fuga consequatur vitae molestias nihil saepe id voluptate iusto placeat rem iste dolorum nemo. Architecto sapiente aspernatur quas voluptatibus placeat dolor molestias laboriosam consequuntur. Veniam maiores beatae molestias vitae sint nulla consectetur tenetur fuga, provident eum vero repellendus perspiciatis rem temporibus iste nesciunt a suscipit cum at accusamus hic ipsam magnam. Reprehenderit neque ullam alias. Blanditiis esse alias aliquid, nihil magnam omnis pariatur! Eveniet ut alias perferendis veniam provident est quas id animi, aliquid sequi accusamus doloribus, odit dolorum, vel optio eum dolor libero dicta nesciunt quasi perspiciatis fugit voluptatum aut. Aliquam voluptates reiciendis expedita maiores ea, neque cupiditate! Vero, tenetur?
+                        <div style="height: 100vh"></div>
+                        <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
