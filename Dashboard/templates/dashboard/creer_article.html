@@ -1,0 +1,19 @@
+{% extends "dashboard/base.html" %}
+
+
+{% block content %}
+
+
+<div class="container-fluid"> 
+    <ul> 
+
+        {% for categorie in categorie %}
+
+        <li>{{categorie.Nom_categorie}} </li>
+        
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock content %}
