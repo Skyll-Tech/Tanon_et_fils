@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages 
 from django.db import IntegrityError
-from .models import Categorie
+from .models import Categorie, Article
+from .forms import Articles_form
 
 
 # Create your views here.
@@ -70,7 +71,38 @@ def affiche_categorie(request):
     context = {'categorie': categorie}
     return render(request, "dashboard/affiche_categorie.html", context)
 
+
+
 def Creer_article(request):
+    categories = Categorie.objects.all()
+    form = Articles_form(request.POST or None, request.FILES or None)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            Nom_article = form.cleaned_data["Nom_article"]
+            if Article.objects.filter(Nom_article=Nom_article).exists():
+                messages.error(request, 'Un article avec le même nom existe déjà!')
+            else:
+                form.save()
+                messages.success(request, 'Cet article a été créé avec succès!')
+            return redirect('creer_article')
+        else:
+            # Ajouter le formulaire avec les erreurs au contexte
+            context = {
+                'form': form,
+                'categories': categories,
+            }
+            return render(request, "dashboard/articles/creer_article.html", context)
+    else:
+        context = {
+            'form': form,
+            'categories': categories,
+        }
+    return render(request, "dashboard/articles/creer_article.html", context)
+
+
+def Afficher_article(request):
+    article = Article.objects.all()
     categorie = Categorie.objects.all()
-    context = {'categorie':categorie}
-    return render(request,"dashboard/creer_article.html",context)
+    context = {"article":article, "categorie": categorie}
+    return render(request,"dashboard/articles/afficher_article.html",context)
