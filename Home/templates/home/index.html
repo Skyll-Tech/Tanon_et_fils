@@ -196,7 +196,7 @@
                             </div>
                             <h4 class="mb-3">Services</h4>
                             <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="">Voir plus<i class="fa fa-arrow-right ms-2"></i></a>
+                            <a class="small fw-medium text-color" href="#">Voir plus<i class="fa fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                 </div>
@@ -226,66 +226,28 @@
                 <h1 class="mb-4"> équipements en vente</h1>
             </div>
             <div class="row g-4">
+            {% for article in article %} 
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/OIP (14).jpeg" %}" alt="">
+                    {% if article.Image_atc %}
+                        <img class="img-fluid" src="{{article.Image_atc.url}}" alt="image de l'article">
+
+                        {% else %}
+                            <img class="img-fluid" src="{% static "img/OIP.jpg" %}" alt="no image">
+
+                    {% endif %}
                         <div class="position-relative p-4 pt-0">
-                            <h4 class="mb-3">Panneaux Solaires</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="{% url "produit" %}">Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i></a>
+                            <h4 class="mb-3">{{article.Nom_article}}</h4>
+                            <p>{{article.Description_atc}}</p>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a class="btn btn-primary" href="{% url "articles_par_cat" article.Categorie_atc.id %}" style="float: left;">Voir plus</a>
+                            <a class="btn btn-light" href="#" style="float: right;">{{article.Prix_atc}} Fcfa</a>
+                        </div>
+                        <div style="clear: both;"></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/newsletter_3_mayotte_bouge_avec_leurope.jpg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <h4 class="mb-3">Kits Solaires</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="{% url "produit" %}">Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/OIP (16).jpeg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <h4 class="mb-3">Système de montage</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="{% url "produit" %}">Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/th (1).jpeg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <h4 class="mb-3">Régulateurs de Charge</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="{% url "produit" %}">Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/OIP (15).jpeg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <h4 class="mb-3">Onduleurs</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="{% url "produit" %}">Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/R (5).jpeg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <h4 class="mb-3">Batteries Solaires</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="{% url "produit" %}">Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
+            {% endfor %}
             </div>
         </div>
     </div>

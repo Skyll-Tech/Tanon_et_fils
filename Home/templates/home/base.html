@@ -83,10 +83,9 @@
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Nos équipements</a>
             <div class="dropdown-menu bg-light m-0">
-                <a href="{% url "produit" %}" class="dropdown-item">Produit 1</a>
-                <a href="{% url "produit" %}" class="dropdown-item">Produit 2</a>
-                <a href="{% url "produit" %}" class="dropdown-item">Produit 3</a>
-                <a href="{% url "produit" %}" class="dropdown-item">Produit 4</a>
+            {% for categorie in categories %}
+                <a href="{% url "articles_par_cat" categorie.id %}" class="dropdown-item">{{categorie.Nom_categorie}}</a>
+            {% endfor %}
             </div>
         </div>
           <a href="{% url "contact" %}" class="nav-item nav-link">Contacts</a>

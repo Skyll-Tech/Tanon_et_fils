@@ -33,7 +33,7 @@ def Creer_categorie(request):
                 
         else: messages.error(request, 'Le nom de la catégorie ne peut pas être vide.')
         
-    return render(request,"dashboard/creer_categorie.html")
+    return render(request,"dashboard/categories/creer_categorie.html")
 
 
 
@@ -53,7 +53,7 @@ def modifier_categorie(request, id):
                 messages.error(request, f'Une erreur s\'est produite: {str(e)}') 
         else:
             messages.error(request, 'Le nom de la catégorie ne peut pas être vide.') 
-    return render(request, 'dashboard/modifier_categorie.html', {'categorie': categorie})
+    return render(request, 'dashboard/categories/modifier_categorie.html', {'categorie': categorie})
 
 
 def supprimer_categorie(request, id):
@@ -62,14 +62,14 @@ def supprimer_categorie(request, id):
         categorie.delete()  
         messages.success(request, 'La catégorie a été supprimée avec succès !')  
         return redirect('affiche_categorie')  
-    return render(request, 'dashboard/supprimer_categorie.html', {'categorie': categorie})  
+    return render(request, 'dashboard/categories/supprimer_categorie.html', {'categorie': categorie})  
 
 
 
 def affiche_categorie(request):
     categorie = Categorie.objects.all()
     context = {'categorie': categorie}
-    return render(request, "dashboard/affiche_categorie.html", context)
+    return render(request, "dashboard/categories/affiche_categorie.html", context)
 
 
 
@@ -106,3 +106,12 @@ def Afficher_article(request):
     categorie = Categorie.objects.all()
     context = {"article":article, "categorie": categorie}
     return render(request,"dashboard/articles/afficher_article.html",context)
+
+def Supprimer_article(request, id):
+    article = get_object_or_404(Article, id=id)
+    if request.method == 'POST':
+        article.delete()
+        messages.success(request, 'Cet article a été supprimé avec succes!')
+        return redirect('afficher_article')
+    return render(request, 'dashboard/articles/supprimer_article.html', {'article':article})
+
