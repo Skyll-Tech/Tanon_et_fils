@@ -109,8 +109,8 @@
                 <td>{{ article.Description_atc }}</td>
                 <td>{{ article.Prix_atc }}Fcfa</td>
                 <td>{{ article.Quantite_atc }}</td>
-                <td> {% if article.Image_atc %} 
-                          <img src="{{ article.Image_atc.url }}" alt="Image de l'article" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;" /> 
+                <td> {% if article.Image1_atc %} 
+                          <img src="{{ article.Image1_atc.url }}" alt="Image de l'article" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;" /> 
                         {% else %}
                           <img src="{% static "img/OIP.jpg" %}" alt="No image" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;" /> 
                         {% endif %}

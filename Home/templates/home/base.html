@@ -30,6 +30,19 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+    <style> 
+      .fixed-height { height: 300px; /* Définir la hauteur fixe */ 
+        width: 100%; /* Assurez-vous que le div a une largeur de 100% */ 
+        position: relative; /* Position relative pour le conteneur */ } 
+      .fixed-height img { position: absolute; /* Position absolue pour l'image */ 
+        top: 50%; /* Centrage vertical */ left: 50%; /* Centrage horizontal */ 
+        transform: translate(-50%, -50%); /* Ajustement pour centrer l'image */ 
+        max-height: 100%; /* Hauteur maximale de 100% pour garder les proportions */
+        max-width: 100%; /* Largeur maximale de 100% pour garder les proportions */ 
+        object-fit: contain; /* Assurer que l'image s'ajuste à l'intérieur du div */ }
+      </style>
+
   </head>
 
   <body>

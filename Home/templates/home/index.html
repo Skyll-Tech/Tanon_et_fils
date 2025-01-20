@@ -229,8 +229,8 @@
             {% for article in article %} 
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item rounded overflow-hidden">
-                    {% if article.Image_atc %}
-                        <img class="img-fluid" src="{{article.Image_atc.url}}" alt="image de l'article">
+                    {% if article.Image1_atc %}
+                        <img class="img-fluid" src="{{article.Image1_atc.url}}" alt="image de l'article">
 
                         {% else %}
                             <img class="img-fluid" src="{% static "img/OIP.jpg" %}" alt="no image">
@@ -240,7 +240,7 @@
                             <h4 class="mb-3">{{article.Nom_article}}</h4>
                             <p>{{article.Description_atc}}</p>
                         <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-primary" href="{% url "articles_par_cat" article.Categorie_atc.id %}" style="float: left;">Voir plus</a>
+                            <a class="btn btn-primary" href="{% url "details_article" article.id %}" style="float: left;">Détails</a>
                             <a class="btn btn-light" href="#" style="float: right;">{{article.Prix_atc}} Fcfa</a>
                         </div>
                         <div style="clear: both;"></div>

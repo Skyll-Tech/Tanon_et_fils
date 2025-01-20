@@ -17,13 +17,20 @@ def produit(request):
     return render(request, "home/produit.html")
 
 
-def Articles_par_cat(request, categorie_id):  # Définition de la vue avec le paramètre categorie_id
-    categorie = get_object_or_404(Categorie, id=categorie_id)  # Récupération de la catégorie ou renvoi d'une erreur 404
-    articles = Article.objects.filter(Categorie_atc=categorie)  # Filtrage des articles pour cette catégorie spécifique
+def Articles_par_cat(request, categorie_id):
+    categorie = get_object_or_404(Categorie, id=categorie_id)  
+    articles = Article.objects.filter(Categorie_atc=categorie)  
     categories = Categorie.objects.all()
     context = {
-        'articles': articles,  # Ajout des articles filtrés au contexte
-        'categorie': categorie,  # Ajout de la catégorie au contexte
+        'articles': articles, 
+        'categorie': categorie,  
         'categories': categories
     }
-    return render(request, 'home/articles_par_cat.html', context)  # Rendu du template avec le contexte
+    return render(request, 'home/articles_par_cat.html', context)  
+
+def Details_article(request, article_id):
+    article = get_object_or_404(Article, id = article_id)
+    articles = Article.objects.all()
+    categories = Categorie.objects.all()
+    context = {'article':article, 'articles':articles, 'categories':categories}
+    return render(request, 'home/details_article.html',context)

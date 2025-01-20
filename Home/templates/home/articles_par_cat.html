@@ -1,51 +1,35 @@
-{% extends "home/base.html" %} {% load static %} {% block content %}
-
-<!-- Product -->
-<div class="container-xxl py-5" id="services">
-  <div class="container">
-    <div
-      class="text-center mx-auto mb-5 wow fadeInUp"
-      data-wow-delay="0.1s"
-      style="max-width: 600px"
-    >
-      <h1 class="mb-4">Nos {{categorie.Nom_categorie}}</h1>
-    </div>
-    <div class="row g-4">
-      {% for article in articles %}
-      <!-- Itération sur les articles filtrés -->
-      <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="service-item rounded overflow-hidden">
-          {% if article.Image_atc %}
-          <img
-            class="img-fluid"
-            src="{{ article.Image_atc.url }}"
-            alt="image de l'article"
-          />
-          <!-- Affichage de l'image de l'article -->
-          {% else %}
-          <img
-            class="img-fluid"
-            src="{% static 'img/OIP.jpg' %}"
-            alt="no image"
-          />
-          <!-- Affichage d'une image par défaut -->
-          {% endif %}
-          <div class="position-relative p-4 pt-0">
-            <h4 class="mb-3">{{ article.Nom_article }}</h4>
-            <!-- Affichage du nom de l'article -->
-            <p>{{ article.Description_atc }}</p>
-            <!-- Affichage de la description de l'article -->
-            <a class="small fw-medium text-color" href="{% url 'produit' %}"
-              >Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i
-            ></a>
-            <!-- Lien pour voir tous les modèles -->
-          </div>
-        </div>
+{% extends 'home/base.html' %} {% load static %} {% block content %}
+  <!-- Product -->
+  <div class="container-xxl py-5" id="services">
+    <div class="container">
+      <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px">
+        <h1 class="mb-4">Nos {{ categorie.Nom_categorie }}</h1>
       </div>
-      {% endfor %}
+      <div class="row g-4">
+        {% for article in articles %}
+          <!-- Itération sur les articles filtrés -->
+          <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="service-item rounded overflow-hidden">
+              {% if article.Image1_atc %}
+                <img class="img-fluid" src="{{ article.Image1_atc.url }}" alt="image de l'article" />
+                <!-- Affichage de l'image de l'article -->
+              {% else %}
+                <img class="img-fluid" src="{% static 'img/OIP.jpg' %}" alt="no image" />
+                <!-- Affichage d'une image par défaut -->
+              {% endif %}
+              <div class="position-relative p-4 pt-0">
+                <h4 class="mb-3">{{ article.Nom_article }}</h4>
+                <!-- Affichage du nom de l'article -->
+                <p>{{ article.Description_atc }}</p>
+                <!-- Affichage de la description de l'article -->
+                <a class="small fw-medium text-color" href="{% url 'articles_par_cat' article.Categorie_atc.id %}">Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i></a>
+                <!-- Lien pour voir tous les modèles -->
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
-</div>
-<!-- Product End -->
-
+  <!-- Product End -->
 {% endblock %}

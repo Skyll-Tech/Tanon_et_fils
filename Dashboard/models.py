@@ -21,8 +21,12 @@ class Article(models.Model):
     Categorie_atc = models.ForeignKey(Categorie, on_delete=models.CASCADE)
     Quantite_atc = models.IntegerField(validators=[MinValueValidator(0)], blank=True, null = True)
     Prix_atc = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    Description_atc = models.TextField(blank=True, null = True)
-    Image_atc = models.ImageField(upload_to='images_articles/', blank=True, null=True)
+    Description1_atc = models.CharField(max_length=256, blank=True, null = True)
+    Description2_atc = models.TextField(blank=True, null = True)
+    Image1_atc = models.ImageField(upload_to='images_articles/', blank=True, null=True)
+    Image2_atc = models.ImageField(upload_to='images_articles/', blank=True, null=True)
+    Image3_atc = models.ImageField(upload_to='images_articles/', blank=True, null=True)
+    Image4_atc = models.ImageField(upload_to='images_articles/', blank=True, null=True)
     
     def __str__(self):
         return f"{self.Nom_article}"

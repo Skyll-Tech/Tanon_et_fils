@@ -1,0 +1,7 @@
+{
+    "prettier.bracketSpacing": true,
+    "prettier.endOfLine": "lf",
+    "prettier.bracketSameLine": false,
+    "prettier.printWidth": 120,
+    "prettier.tabWidth": 2
+}
