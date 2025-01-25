@@ -25,15 +25,12 @@
             <div class="col-lg-12 w-100">
               <div class="contact-form rounded p-5" style="background-color: rgb(202, 202, 211)">
                 <div id="success"></div>
-                <form method="POST" action="{% url 'creer_article' %}" enctype="multipart/form-data">
+                  <form method="POST" action="{% url 'creer_article' %}" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nom</span> <input type="text" class="form-control" name="Nom_article" placeholder="Nom de l'article" required aria-label="Nom_article" aria-describedby="basic-addon1" />
                   </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Description 1</span> <textarea class="form-control" name="Description1_atc" aria-describedby="basic-addon1"></textarea>
-                  </div> <div class="input-group mb-3">
-                  </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Description 2</span> <textarea class="form-control" name="Description2_atc" aria-describedby="basic-addon1"></textarea>
+                    <span class="input-group-text" id="basic-addon1">Description</span> <textarea class="form-control" name="Description_atc" aria-describedby="basic-addon1"></textarea>
                   </div> <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Catégorie</span> <select class="form-select mb-3" aria-label="Default select example" name="Categorie_atc">
                       <option selected>Choisir la catégorie de l'article</option> {% for categorie in categories %}
@@ -45,16 +42,7 @@
                   </div> <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Prix</span> <input type="number" class="form-control" name="Prix_atc" placeholder="Prix" aria-label="Prix_atc" aria-describedby="basic-addon1" />
                   </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Image 1</span> <input type="file" class="form-control" name="Image1_atc" aria-label="Image1_atc" aria-describedby="basic-addon1" />
-                  </div> <div class="text-center">
-                  </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Image 2</span> <input type="file" class="form-control" name="Image2_atc" aria-label="Image2_atc" aria-describedby="basic-addon1" />
-                  </div> <div class="text-center">
-                  </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Image 3</span> <input type="file" class="form-control" name="Image3_atc" aria-label="Image3_atc" aria-describedby="basic-addon1" />
-                  </div> <div class="text-center">
-                  </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Image 4</span> <input type="file" class="form-control" name="Image4_atc" aria-label="Image4_atc" aria-describedby="basic-addon1" />
+                    <span class="input-group-text" id="basic-addon1">Image</span> <input type="file" class="form-control" name="Image_atc" aria-label="Image_atc" aria-describedby="basic-addon1" />
                   </div> <div class="text-center">
                     <button class="btn btn-primary py-3 px-5 mt-3" type="submit">Créer</button>
                   </div>
