@@ -75,29 +75,25 @@ def affiche_categorie(request):
 
 def Creer_article(request):
     categories = Categorie.objects.all()
-    form = Articles_form(request.POST or None, request.FILES or None)
-
+    context = {
+        'categories': categories,
+    }
     if request.method == 'POST':
+        print("Vue Creer_article appelée")
+        form = Articles_form(request.POST or None, request.FILES or None)
         if form.is_valid():
-            Nom_article = form.cleaned_data["Nom_article"]
-            if Article.objects.filter(Nom_article=Nom_article).exists():
+            Nom_article = form.cleaned_data["Nom_article"].lower()  # Convertir en minuscules
+            if Article.objects.filter(Nom_article__iexact=Nom_article).exists():  # Utiliser iexact pour comparaison insensible à la casse
                 messages.error(request, 'Un article avec le même nom existe déjà!')
             else:
-                form.save()
+                article = form.save(commit=False)
+                article.Nom_article = Nom_article  # Assurez-vous de sauvegarder en minuscules
+                article.save()
                 messages.success(request, 'Cet article a été créé avec succès!')
             return redirect('creer_article')
         else:
-            # Ajouter le formulaire avec les erreurs au contexte
-            context = {
-                'form': form,
-                'categories': categories,
-            }
+            context['form'] = form  # Ajouter le formulaire avec les erreurs au contexte
             return render(request, "dashboard/articles/creer_article.html", context)
-    else:
-        context = {
-            'form': form,
-            'categories': categories,
-        }
     return render(request, "dashboard/articles/creer_article.html", context)
 
 

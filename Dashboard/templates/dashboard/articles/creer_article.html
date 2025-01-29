@@ -1,16 +1,14 @@
 {% extends 'dashboard/base.html' %} {% block content %}
   {% if messages %}
     <div class="container mt-3">
-      {% for message in messages %}
-        <div class="alert {% if message.tags %}
-            alert-{{ message.tags }}
-          {% else %}
-            alert-info
-          {% endif %}"
-          role="alert">{{ message }}</div>
-      {% endfor %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %} alert-{{ message.tags }} {% else %} alert-info {% endif %}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
     </div>
-  {% endif %}
+{% endif %}
+
 
   <div class="w-75 ml-5">
     <div class="d-flex justify-content-center align-items-center">
@@ -20,17 +18,34 @@
           <div class="">
             <h3>Créer un article</h3>
           </div>
-
           <div class="row justify-content-center text-dark">
             <div class="col-lg-12 w-100">
               <div class="contact-form rounded p-5" style="background-color: rgb(202, 202, 211)">
                 <div id="success"></div>
-                  <form method="POST" action="{% url 'creer_article' %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'creer_article' %}" enctype="multipart/form-data">
                   {% csrf_token %}
+                  {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Veuillez corriger les erreurs ci-dessous :</strong>
+                        <ul>
+                            {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }} : {{ error }}</li>
+                            {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                  {% endif %}
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nom</span> <input type="text" class="form-control" name="Nom_article" placeholder="Nom de l'article" required aria-label="Nom_article" aria-describedby="basic-addon1" />
                   </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Description</span> <textarea class="form-control" name="Description_atc" aria-describedby="basic-addon1"></textarea>
+                    <span class="input-group-text" id="basic-addon1">Description 1</span> <textarea class="form-control" name="Description1_atc" aria-describedby="basic-addon1"></textarea>
+                  </div> <div class="input-group mb-3">
+                  </div> <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Description 2</span> <textarea class="form-control" name="Description2_atc" aria-describedby="basic-addon1"></textarea>
                   </div> <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Catégorie</span> <select class="form-select mb-3" aria-label="Default select example" name="Categorie_atc">
                       <option selected>Choisir la catégorie de l'article</option> {% for categorie in categories %}
@@ -41,8 +56,20 @@
                     <span class="input-group-text" id="basic-addon1">Quantité</span> <input type="text" class="form-control" name="Quantite_atc" placeholder="Quantité" aria-label="Quantite_atc" aria-describedby="basic-addon1" />
                   </div> <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Prix</span> <input type="number" class="form-control" name="Prix_atc" placeholder="Prix" aria-label="Prix_atc" aria-describedby="basic-addon1" />
+                    <script>
+                        document.getElementById('prix_atc').value = formatPrice(parseFloat(document.getElementById('prix_atc').value));
+                    </script>
                   </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Image</span> <input type="file" class="form-control" name="Image_atc" aria-label="Image_atc" aria-describedby="basic-addon1" />
+                    <span class="input-group-text" id="basic-addon1">Image</span> <input type="file" class="form-control" name="Image1_atc" aria-label="Image_atc" aria-describedby="basic-addon1" />
+                  </div> <div class="text-center">
+                  </div> <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Image</span> <input type="file" class="form-control" name="Image2_atc" aria-label="Image_atc" aria-describedby="basic-addon1" />
+                  </div> <div class="text-center">
+                  </div> <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Image</span> <input type="file" class="form-control" name="Image3_atc" aria-label="Image_atc" aria-describedby="basic-addon1" />
+                  </div> <div class="text-center">
+                  </div> <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Image</span> <input type="file" class="form-control" name="Image4_atc" aria-label="Image_atc" aria-describedby="basic-addon1" />
                   </div> <div class="text-center">
                     <button class="btn btn-primary py-3 px-5 mt-3" type="submit">Créer</button>
                   </div>

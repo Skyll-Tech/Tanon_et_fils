@@ -1,5 +1,6 @@
 {% extends "home/base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -238,10 +239,10 @@
                     {% endif %}
                         <div class="position-relative p-4 pt-0">
                             <h4 class="mb-3">{{article.Nom_article}}</h4>
-                            <p>{{article.Description_atc}}</p>
+                            <p>{{article.Description1_atc}}</p>
                         <div class="d-grid gap-2 d-md-block">
                             <a class="btn btn-primary" href="{% url "details_article" article.id %}" style="float: left;">Détails</a>
-                            <a class="btn btn-light" href="#" style="float: right;">{{article.Prix_atc}} Fcfa</a>
+                            <a class="btn btn-light" href="#" style="float: right;">{{ article.Prix_atc|intcomma }} Fcfa</a>
                         </div>
                         <div style="clear: both;"></div>
                         </div>
