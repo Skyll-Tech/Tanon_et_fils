@@ -1,4 +1,8 @@
-{% extends 'home/base.html' %} {% load static %} {% block content %}
+{% extends 'home/base.html' %} 
+{% load static %} 
+{% block content %}
+{% load humanize %}
+
   <!-- Product -->
   <div class="container-xxl py-5" id="services">
     <div class="container">
@@ -12,18 +16,17 @@
             <div class="service-item rounded overflow-hidden">
               {% if article.Image1_atc %}
                 <img class="img-fluid" src="{{ article.Image1_atc.url }}" alt="image de l'article" />
-                <!-- Affichage de l'image de l'article -->
               {% else %}
                 <img class="img-fluid" src="{% static 'img/OIP.jpg' %}" alt="no image" />
-                <!-- Affichage d'une image par défaut -->
               {% endif %}
               <div class="position-relative p-4 pt-0">
                 <h4 class="mb-3">{{ article.Nom_article }}</h4>
-                <!-- Affichage du nom de l'article -->
                 <p>{{ article.Description_atc }}</p>
-                <!-- Affichage de la description de l'article -->
-                <a class="small fw-medium text-color" href="{% url 'articles_par_cat' article.Categorie_atc.id %}">Voir tout les modèles<i class="fa fa-arrow-right ms-2"></i></a>
-                <!-- Lien pour voir tous les modèles -->
+                <div class="d-grid gap-2 d-md-block">
+                            <a class="btn btn-primary" href="{% url "details_article" article.id %}" style="float: left;">Détails</a>
+                            <a class="btn btn-light" href="#" style="float: right;">{{ article.Prix_atc|intcomma }} Fcfa</a>
+                        </div>
+                        <div style="clear: both;"></div>
               </div>
             </div>
           </div>

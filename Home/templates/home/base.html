@@ -46,13 +46,13 @@
   </head>
 
   <body>
-    <!-- Spinner Start -->
+    <!-- Spinner Start
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
       <div class="spinner-border text-color" style="width: 3rem; height: 3rem;" role="status">
         <span class="sr-only">Loading...</span>
       </div>
     </div>
-    <!-- Spinner End -->
+     Spinner End -->
 
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark p-0">
@@ -64,7 +64,7 @@
           </div>
           <div class="h-100 d-inline-flex align-items-center">
             <small class="far fa-clock text-color me-2"></small>
-            <small>lun - sam : 09.00 AM - 09.00 PM</small>
+            <small>lun - sam : 08h00 - 18h30</small>
           </div>
         </div>                                           
         <div class="col-lg-5 px-5 text-end">
@@ -85,7 +85,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-      <a href="index.html" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"><h2 class="m-0 text-color">Tanon&Fils</h2></a>
+      <a href="{% url "home" %}" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"><h2 class="m-0 text-color">Tanon&Fils</h2></a>
       <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">

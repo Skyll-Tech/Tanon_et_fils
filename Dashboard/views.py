@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages 
 from django.db import IntegrityError
-from .models import Categorie, Article
-from .forms import Articles_form
+from .models import Categorie, Article, Services
+from .forms import Articles_form, Services_form
 
 
 # Create your views here.
@@ -79,16 +79,13 @@ def Creer_article(request):
         'categories': categories,
     }
     if request.method == 'POST':
-        print("Vue Creer_article appelée")
         form = Articles_form(request.POST or None, request.FILES or None)
         if form.is_valid():
             Nom_article = form.cleaned_data["Nom_article"].lower()  # Convertir en minuscules
             if Article.objects.filter(Nom_article__iexact=Nom_article).exists():  # Utiliser iexact pour comparaison insensible à la casse
                 messages.error(request, 'Un article avec le même nom existe déjà!')
             else:
-                article = form.save(commit=False)
-                article.Nom_article = Nom_article  # Assurez-vous de sauvegarder en minuscules
-                article.save()
+                form.save()
                 messages.success(request, 'Cet article a été créé avec succès!')
             return redirect('creer_article')
         else:
@@ -111,3 +108,31 @@ def Supprimer_article(request, id):
         return redirect('afficher_article')
     return render(request, 'dashboard/articles/supprimer_article.html', {'article':article})
 
+
+
+def Creer_service(request):
+    if request.method =='POST':
+        form = Services_form(request.POST, request.FILES)
+        if form.is_valid():
+            Nom_service = form.cleaned_data["Nom_service"].lower() 
+            if Services.objects.filter(Nom_service__iexact = Nom_service).exists():
+                messages.error(request, "Un services du même nom existe déjà!")
+            else:
+                form.save()
+                messages.success(request, 'Ce services a été créé avec succès!')
+            return redirect('creer_service')
+    return render(request, "dashboard/services/creer_service.html")
+
+
+def Afficher_services(request):
+    services = Services.objects.all()
+    context = {'services':services}
+    return render(request, 'dashboard/services/afficher_services.html', context)
+
+def Supprimer_service(request, id):
+    services = get_object_or_404(Services, id=id)
+    if request.method == 'POST':
+        services.delete()
+        messages.success(request, 'Ce service a été supprimé avec succes!')
+        return redirect('afficher_services')
+    return render(request, 'dashboard/services/supprimer_service.html', {'services':services})

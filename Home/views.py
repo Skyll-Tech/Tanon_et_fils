@@ -1,13 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from Dashboard.models import Article, Categorie
+from Dashboard.models import Article, Categorie, Services
 
 # Create your views here.
 
 def home(request):
     article = Article.objects.all()
     categories = Categorie.objects.all()
-    context = {'article':article, 'categories':categories}
+    services = Services.objects.all()
+    context = {'article':article, 'categories':categories, 'services':services}
     return render(request,"home/index.html", context)
 
 def contact(request):

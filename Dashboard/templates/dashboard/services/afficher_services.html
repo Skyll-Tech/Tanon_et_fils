@@ -1,4 +1,5 @@
 {% extends "dashboard/base.html" %} {% block content %}
+{% load static %}
 
 {% if messages %}
 <div class="container mt-3">
@@ -71,35 +72,42 @@
         </div>
       </div>
 
-
-
       <div class="card mb-4">
         <div class="card-header">
           <i class="fas fa-table me-1"></i>
-          Toutes les catégories
+          Toutes les service
         </div>
         <div class="card-body">
           <table id="datatablesSimple">
             <thead>
               <tr>
-                <th>Nom de la catégorie</th>
-                <th>Nombre d'article</th>
+                <th>Nom du service </th>
+                <th>Description</th>
+                <th>Image</th>
                 <th>Gérer</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
-                <th>Nom de la catégorie</th>
-                <th>Nombre d'article</th>
+                <th>Nom du service </th>
+                <th>Description</th>
+                <th>Image</th>
                 <th>Gérer</th>
               </tr>
             </tfoot>
             <tbody>
-              {% for categorie in categorie %}
+              {% for service in services %}
               <tr>
-                <td>{{ categorie.Nom_categorie }}</td>
-                <td>System Architect</td>
-                <td><a href="{% url 'supprimer_categorie' categorie.id %}" class="btn btn-danger ">Supprimer</a> <a href="{% url 'modifier_categorie' categorie.id %}" class="btn btn-primary ">Modifier</a></td>
+                <td>{{ service.Nom_service }}</td>
+                <td>{{ service.Description_svc }}</td>
+                <td> {% if service.Image_svc %} 
+                          <img src="{{ service.Image_svc.url }}" alt="Image du service" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;" /> 
+                        {% else %}
+                          <img src="{% static "img/OIP.jpg" %}" alt="No image" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;" /> 
+                        {% endif %}
+                </td>
+                <td><a href="{% url 'supprimer_service' service.id %}" class="btn btn-danger">Supprimer</a>
+                <a href="" class="btn btn-primary ">Désactiver</a></td>
               </tr>
               {% endfor %}
             </tbody>

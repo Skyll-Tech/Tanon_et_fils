@@ -120,7 +120,6 @@
                         <p><i class="fa fa-check-circle text-color  me-3"></i>Diam dolor diam ipsum</p>
                         <p><i class="fa fa-check-circle text-color me-3"></i>Aliqu diam amet diam et eos</p>
                         <p><i class="fa fa-check-circle text-color me-3"></i>Tempor erat elitr rebum at clita</p>
-                        <a href="" class="btn btn-primary custom-color rounded-pill py-3 px-5 mt-3">Voir plus</a>
                     </div>
                 </div>
             </div>
@@ -136,84 +135,31 @@
                 <h1 class="mb-4">Nos services</h1>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/img-600x400-1.jpg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-solar-panel fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Etude de projet</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="">Voir plus<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/newsletter_3_mayotte_bouge_avec_leurope.jpg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-wind fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Installations</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="">Voir plus<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
+            {% for service in services %}
+
+
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/OIP(9).jpeg" %}" alt="">
+                    {% if service.Image_svc %}
+                        <img class="img-fluid" src="{{ service.Image_svc.url }}" alt="Image du service">
+                    {% else %}
+                        <img class="img-fluid" src="{% static "img/OIP.jpg" %}" alt="no image">
+                    {% endif %}
+
                         <div class="position-relative p-4 pt-0">
                             <div class="service-icon">
                                 <i class="fa fa-lightbulb fa-3x"></i>
                             </div>
-                            <h4 class="mb-3">Vente d'équipements électronique</h4>
-                            <p><a href="">Visiter notre boutique</a></p>
-                            <a class="small fw-medium text-color" href="">Voir plus<i class="fa fa-arrow-right ms-2"></i></a>
+                            <h4 class="mb-3">{{service.Nom_service}}</h4>
+                            {% if service.Description_svc %}
+                            <p>{{service.Description_svc}}</p>
+                            {% endif %}
+                            
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/newsletter_3_mayotte_bouge_avec_leurope.jpg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-solar-panel fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">services</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="">Voir plus<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/OIP(8).jpeg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-wind fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Services</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="#">Voir plus<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="{% static "img/img-600x400-6.jpg" %}" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-lightbulb fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Services</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium text-color" href="">Voir plus<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
+
+            {% endfor %}
             </div>
         </div>
     </div>

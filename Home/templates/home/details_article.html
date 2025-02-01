@@ -65,15 +65,20 @@
 
                     <button class="btn btn-primary mb-3" type="button">Ajouter au panier</button>
                     <button class="btn btn-primary mb-3" type="button">Acheter maintenant</button>
-                    <button class="btn btn-primary mb-3" type="button">Nous contacter sur whatsApp</button>
+                    <a class="btn btn-primary mb-3" href="https://wa.me/237657099175" target = "blank">Nous contacter sur whatsApp</a>
                   </div>
                   <hr>
                   
                 <p>Catégories: {{article.Categorie_atc}} </p>
+                <p>Marque: {{article.Marque_atc}} </p>
                 <p>Description: {{article.Description1_atc}} </p>
           </div>
         </div>
         <hr>
+        {% if article.Description2_atc %}
+        <h2 class="text-center"> Description complete de l'article </h2>
+        {{article.Description2_atc}}
+        {% endif %}
       </div>
     </div>
   </div>

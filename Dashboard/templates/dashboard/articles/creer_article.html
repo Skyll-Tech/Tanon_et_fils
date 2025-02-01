@@ -42,10 +42,13 @@
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nom</span> <input type="text" class="form-control" name="Nom_article" placeholder="Nom de l'article" required aria-label="Nom_article" aria-describedby="basic-addon1" />
                   </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Description 1</span> <textarea class="form-control" name="Description1_atc" aria-describedby="basic-addon1"></textarea>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Marque</span> <input type="text" class="form-control" name="Marque_atc" placeholder="Marque de l'article" required aria-label="Marque_atc" aria-describedby="basic-addon1" />
+                  </div> <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Description 1</span> <textarea class="form-control" name="Description1_atc" placeholder="Courte description de votre article" aria-describedby="basic-addon1"></textarea>
                   </div> <div class="input-group mb-3">
                   </div> <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Description 2</span> <textarea class="form-control" name="Description2_atc" aria-describedby="basic-addon1"></textarea>
+                    <span class="input-group-text" id="basic-addon1">Description 2</span> <textarea class="form-control" placeholder="Longue description de votre article" name="Description2_atc" aria-describedby="basic-addon1"></textarea>
                   </div> <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Catégorie</span> <select class="form-select mb-3" aria-label="Default select example" name="Categorie_atc">
                       <option selected>Choisir la catégorie de l'article</option> {% for categorie in categories %}

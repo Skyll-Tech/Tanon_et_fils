@@ -17,4 +17,9 @@ urlpatterns = [
     path("afficher_article/", views.Afficher_article, name="afficher_article"),
     path("supprimer_article/supprimer/<int:id>/", views.Supprimer_article, name="supprimer_article"),
 
+    path("creer_service/", views.Creer_service, name="creer_service"),
+    path("afficher_services/", views.Afficher_services, name="afficher_services"),
+    path("supprimer_service/supprimer/<int:id>/", views.Supprimer_service, name="supprimer_service"),
+
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
