@@ -1,0 +1,69 @@
+{% extends "dashboard/base.html" %}
+
+
+{% block content %}
+
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="d-flex justify-content-center align-items-center">
+    <div>
+      <!-- Vos éléments ici -->
+      <div class="container-fluid py-5 ">
+        <div class="container py-5">
+            <div class="">
+                <h3>Créer une nouvelle catégorie</h3>
+            </div>
+            <div class="row justify-content-center text-dark">
+                <div class="col-lg-12">
+                    <div class="contact-form rounded p-5 w-100" style="background-color: rgb(202, 202, 211);">
+                        <div id="success"></div>
+                        <form method="POST" action="{% url 'creer_service' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>Veuillez corriger les erreurs ci-dessous :</strong>
+                                    <ul>
+                                        {% for field in form %}
+                                        {% for error in field.errors %}
+                                        <li>{{ field.label }} : {{ error }}</li>
+                                        {% endfor %}
+                                        {% endfor %}
+                                        {% for error in form.non_field_errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Nom du services</span>
+                                <input type="text" class="form-control" name="Nom_service" placeholder="nom du services" aria-label="services" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Description </span> <textarea class="form-control" name="Description_svc" placeholder="Courte description de votre article" aria-describedby="basic-addon1"></textarea>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Image</span> <input type="file" class="form-control" name="Image_svc" aria-label="Image_svc" aria-describedby="basic-addon1" />
+                            </div>
+                            <div class="text-center">   
+                                <button class="btn btn-primary py-3 px-5 mt-3"
+                                    type="submit">Creer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    </div>
+  </div>
+
+{% endblock content %}

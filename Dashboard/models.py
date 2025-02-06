@@ -18,6 +18,7 @@ class Article(models.Model):
     
     
     Nom_article = models.CharField(max_length=50, unique=True)
+    Marque_atc = models.CharField(max_length=25, blank=True, null=True)
     Categorie_atc = models.ForeignKey(Categorie, on_delete=models.CASCADE)
     Quantite_atc = models.IntegerField(validators=[MinValueValidator(0)], blank=True, null = True)
     Prix_atc = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
@@ -30,3 +31,13 @@ class Article(models.Model):
     
     def __str__(self):
         return f"{self.Nom_article}"
+
+
+
+class Services(models.Model):
+    Nom_service = models.CharField(max_length=50, unique=True) 
+    Description_svc = models.CharField(max_length=255, blank=True, null=True)
+    Image_svc = models.ImageField(upload_to='images_services/', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.Nom_service}"
