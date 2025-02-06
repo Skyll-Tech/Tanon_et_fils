@@ -103,7 +103,7 @@
                 <td> {% if service.Image_svc %} 
                           <img src="{{ service.Image_svc.url }}" alt="Image du service" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;" /> 
                         {% else %}
-                          <img src="{% static "img/OIP.jpg" %}" alt="No image" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;" /> 
+                          <img src="{% static "img1/OIP.jpg" %}" alt="No image" class="img-thumbnail rounded-circle" style="width: 50px; height: 50px;" /> 
                         {% endif %}
                 </td>
                 <td><a href="{% url 'supprimer_service' service.id %}" class="btn btn-danger">Supprimer</a>
