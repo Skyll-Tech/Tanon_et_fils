@@ -14,8 +14,11 @@ def home(request):
 def contact(request):
     return render(request, "home/contact.html")
 
-def produit(request):
-    return render(request, "home/produit.html")
+def All_article(request):
+    article = Article.objects.all()
+    categorie = Categorie.objects.all()
+    context={"article":article, "categories":categorie}
+    return render(request, "home/article.html", context)
 
 
 def Articles_par_cat(request, categorie_id):

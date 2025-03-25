@@ -5,7 +5,7 @@
 {% block content %}
 
     <!-- Carousel Start -->
-    <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid p-0 pb-1 wow fadeIn" data-wow-delay="0.1s">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative" data-dot="<img src='{% static "img/R(30).jpeg" %}'>">
                 <img class="img-fluid" src="{% static "img/R(30).jpeg" %}" alt="">
@@ -55,7 +55,7 @@
 
 
     <!-- Feature Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-3">
         <div class="container">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
@@ -128,77 +128,145 @@
     <!-- About End -->
 
 
-    <!-- Service Start -->
-    <div class="container-xxl py-5" id="services">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="mb-4">Nos services</h1>
+    		<!-- Start Why Choose Us Section 
+		<div class="why-choose-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-6">
+						<h2 class="section-title">Why Choose Us</h2>
+						<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+
+						<div class="row my-5">
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/truck.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Fast &amp; Free Shipping</h3>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/bag.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Easy to Shop</h3>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/support.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>24/7 Support</h3>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/return.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Hassle Free Returns</h3>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-5">
+						<div class="img-wrap">
+							<img src="{% static "img/why-choose-us-img.jpg" %}" alt="Image" class="img-fluid">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		 End Why Choose Us Section -->
+
+
+    <!-- Services Start -->
+    <div class="container-fluid py-2 " id="services">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-5">
+                <h1>Nos services</h1>
             </div>
-            <div class="row g-4">
-            {% for service in services %}
-
-
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded overflow-hidden">
+            <div class="row">
+                {% for service in services %}
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
                     {% if service.Image_svc %}
                         <img class="img-fluid" src="{{ service.Image_svc.url }}" alt="Image du service">
                     {% else %}
                         <img class="img-fluid" src="{% static "img1/OIP.jpg" %}" alt="no image">
-                    {% endif %}
+                    {% endif %}                        
+                    <a class="cat-overlay text-white text-decoration-none" href="">
+                        <h4 class="text-white font-weight-medium">{{service.Nom_service}}</h4>
+                    {% if service.Description_svc %}
+                    <span>{{service.Description_svc}}</span>
+                        {% endif %}
+                    </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Services end -->
 
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-lightbulb fa-3x"></i>
+
+            <!-- Products -->
+        <div class="container-fluid product bg-light pb-5">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h2 class="display-4 text-capitalize mb-3">Nos produits</h2>
+                </div>
+                <div class="row g-4">
+                        {% for article in article %} 
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="product-item">
+                            <div class="product-img">
+                                {% if article.Image1_atc %}
+                                    <img src="{{article.Image1_atc.url}}" class="img-fluid w-100" alt="Image">
+                                {% else %}
+                                    <img src="{% static "img1/OIP.jpg" %}" class="img-fluid w-100" alt="No Image">
+                                {% endif %}
                             </div>
-                            <h4 class="mb-3">{{service.Nom_service}}</h4>
-                            {% if service.Description_svc %}
-                            <p>{{service.Description_svc}}</p>
-                            {% endif %}
-                            
+                            <div class="product-content text-center p-4">
+                                    <i class="fas fa-sun text-primary fa-4x"></i>
+                                <a href="#" class="d-block fs-4 my-4"> {{article.Nom_article}} </a>
+                                <p class="text-white mb-4">{{article.Description1_atc}}</p>
+                                <div class="d-grid gap-2 d-md-block">
+                                <a class="btn btn-primary" href="{% url "details_article" article.id %}" style="float: left;">Détails</a>
+                                <a class="btn btn-primary" href="#" style="float: right;">{{ article.Prix_atc|intcomma }} Fcfa</a>
+                        </div>
+                            </div>
+                            <div class="product-tytle">
+                                <div class="d-flex align-items-center ps-4 w-100">
+                                    <h4> {{article.Nom_article}} </h4>
+                                </div>
+                                <div class="btn-xl-square bg-secondary p-4" style="width: 80px; height: 80px;">
+                                    <i class="fas fa-sun text-primary fa-2x "></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                        {% endfor %}
 
-            {% endfor %}
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-
-    <!-- Product -->
-    <div class="container-xxl py-5" id="services">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="mb-4"> équipements en vente</h1>
-            </div>
-            <div class="row g-4">
-            {% for article in article %} 
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded overflow-hidden">
-                    {% if article.Image1_atc %}
-                        <img class="img-fluid" src="{{article.Image1_atc.url}}" alt="image de l'article">
-
-                        {% else %}
-                            <img class="img-fluid" src="{% static "img1/OIP.jpg" %}" alt="no image">
-
-                    {% endif %}
-                        <div class="position-relative p-4 pt-0">
-                            <h4 class="mb-3">{{article.Nom_article}}</h4>
-                            <p>{{article.Description1_atc}}</p>
-                        <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-primary" href="{% url "details_article" article.id %}" style="float: left;">Détails</a>
-                            <a class="btn btn-light" href="#" style="float: right;">{{ article.Prix_atc|intcomma }} Fcfa</a>
-                        </div>
-                        <div style="clear: both;"></div>
-                        </div>
+                    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
+                        <a class="btn btn-secondary py-3 px-5 mt-4 custom-color" href="{% url "article" %}">Voir plus</a>
                     </div>
                 </div>
-            {% endfor %}
             </div>
         </div>
-    </div>
-    <!-- Product End -->
+        <!-- End products -->
 
 
     <!-- Feature Start -->
@@ -428,7 +496,6 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class=" text-color">Notre équipe</h6>
                 <h1 class="mb-4">Une équipe experimentée</h1>
             </div>
             <div class="row g-4">
