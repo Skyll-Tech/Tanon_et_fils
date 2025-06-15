@@ -13,6 +13,9 @@ urlpatterns = [
     path('categories/modifier/<int:id>/', views.modifier_categorie, name='modifier_categorie'),
     path('categories/supprimer/<int:id>/', views.supprimer_categorie, name='supprimer_categorie'),
     
+    path("creer_sous_categorie/", views.Creer_cat_categorie, name="creer_sous_categorie"),
+
+    
     path("creer_article/", views.Creer_article, name="creer_article"),
     path("afficher_article/", views.Afficher_article, name="afficher_article"),
     path("supprimer_article/supprimer/<int:id>/", views.Supprimer_article, name="supprimer_article"),

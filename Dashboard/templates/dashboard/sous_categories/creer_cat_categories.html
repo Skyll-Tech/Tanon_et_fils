@@ -1,0 +1,70 @@
+{% extends "dashboard/base.html" %}
+
+
+{% block content %}
+
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="d-flex justify-content-center align-items-center">
+    <div>
+      <!-- Vos éléments ici -->
+      <div class="container-fluid py-5 ">
+        <div class="container py-5">
+            <div class="">
+                <h3>Créer une nouvelle sous catégorie</h3>
+            </div>
+            <div class="row justify-content-center text-dark">
+                <div class="col-lg-12">
+                    <div class="contact-form rounded p-5" style="background-color: rgb(202, 202, 211);">
+                        <div id="success"></div>
+<form method="POST" action="{% url 'creer_sous_categorie' %}">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Nom de la sous-catégorie</span>
+        <input type="text" class="form-control" name="Nom_cat_categorie" placeholder="Nom catégorie" aria-label="Nom" aria-describedby="basic-addon1">
+        {% if form.Nom_cat_categorie.errors %}
+            <div class="text-danger">
+                {{ form.Nom_cat_categorie.errors }}
+            </div>
+        {% endif %}
+    </div>
+    <span class="input-group-text" id="basic-addon1">Catégorie</span>
+    <select class="form-select mb-3" aria-label="Default select example" name="Categorie_cat">
+        <option selected>Choisir la catégorie de la sous-catégorie</option>
+        {% for categorie in categories %}
+            <option value="{{ categorie.id }}">{{ categorie.Nom_categorie }}</option>
+        {% endfor %}
+    </select>
+    {% if form.Categorie_cat.errors %}
+        <div class="text-danger">
+            {{ form.Categorie_cat.errors }}
+        </div>
+    {% endif %}
+    <div class="text-center">   
+        <button class="btn btn-primary py-3 px-5 mt-3" type="submit">Créer</button>
+    </div>
+</form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    </div>
+  </div>
+
+{% endblock content %}

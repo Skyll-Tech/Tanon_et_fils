@@ -207,11 +207,9 @@
                     {% else %}
                         <img class="img-fluid" src="{% static "img1/OIP.jpg" %}" alt="no image">
                     {% endif %}                        
-                    <a class="cat-overlay text-white text-decoration-none" href="">
+                    <a class="cat-overlay text-white text-decoration-none" href="{% url 'service_page' %}">
                         <h4 class="text-white font-weight-medium">{{service.Nom_service}}</h4>
-                    {% if service.Description_svc %}
-                    <span>{{service.Description_svc}}</span>
-                        {% endif %}
+                    
                     </a>
                     </div>
                 </div>

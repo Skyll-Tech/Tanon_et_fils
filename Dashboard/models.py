@@ -10,6 +10,16 @@ class Categorie(models.Model):
         return f"{self.Nom_categorie}"
     
 
+class Cat_categorie(models.Model):
+    Nom_cat_categorie = models.CharField(max_length=30, unique=True)
+    Nb_article = models.IntegerField(default=0)
+    Categorie_cat = models.ForeignKey(Categorie, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.Nom_cat_categorie
+
+    
+
 class Article(models.Model):
     
     DISPONIBLE = 'disponible'
