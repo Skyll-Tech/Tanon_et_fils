@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages 
 from django.db import IntegrityError
-from .models import Categorie, Article, Services
-from .forms import Articles_form, Services_form
+from .models import Categorie, Article, Services, Cat_categorie
+from .forms import Articles_form, Services_form, Cat_categorie_Form
 
 
 # Create your views here.
@@ -65,10 +65,43 @@ def supprimer_categorie(request, id):
     return render(request, 'dashboard/categories/supprimer_categorie.html', {'categorie': categorie})  
 
 
+from django.shortcuts import render
+from django.contrib import messages
+from .forms import Cat_categorie_Form
+from .models import Cat_categorie, Categorie
+
+def Creer_cat_categorie(request):
+    # Récupération des catégories existantes
+    categorie = Categorie.objects.all()
+    form = Cat_categorie_Form()  # Formulaire vierge par défaut
+    
+    if request.method == 'POST':  # Vérifie si le formulaire est soumis
+        print('Reçu')  # Debug
+        form = Cat_categorie_Form(request.POST)  # Instancie le formulaire avec les données POST
+        Nom_cat_categorie = request.POST.get('Nom_cat_categorie', '')  # Récupère le nom
+
+        if form.is_valid():  # Vérifie la validité du formulaire
+            print("Réussi")  # Debug
+            if Cat_categorie.objects.filter(Nom_cat_categorie=Nom_cat_categorie).exists():
+                messages.error(request, "Ce nom de sous-catégorie existe déjà")
+            else:
+                form.save()  # Enregistre la nouvelle sous-catégorie
+                messages.success(request, "Sous-catégorie créée avec succès")
+        else:
+            # Affiche les erreurs de formulaire dans la console (Debug)
+            print(form.errors)
+            messages.error(request, "Veuillez corriger les erreurs dans le formulaire")
+    
+    # Ajoute les données au contexte
+    context = {'categories': categorie, 'form': form}
+    return render(request, "dashboard/sous_categories/creer_cat_categories.html", context)
+
+
+            
 
 def affiche_categorie(request):
     categorie = Categorie.objects.all()
-    context = {'categorie': categorie}
+    context = {'categories': categorie}
     return render(request, "dashboard/categories/affiche_categorie.html", context)
 
 
@@ -78,7 +111,7 @@ def Creer_article(request):
     context = {
         'categories': categories,
     }
-    if request.method == 'POST':
+    if request.method == 'POST': #verifi si le formulaire est soumis
         form = Articles_form(request.POST or None, request.FILES or None)
         if form.is_valid():
             Nom_article = form.cleaned_data["Nom_article"].lower()  # Convertir en minuscules
