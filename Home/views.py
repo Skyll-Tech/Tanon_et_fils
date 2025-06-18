@@ -38,3 +38,6 @@ def Details_article(request, article_id):
     categories = Categorie.objects.all()
     context = {'article':article, 'articles':articles, 'categories':categories}
     return render(request, 'home/details_article.html',context)
+
+def Service_page(request):
+    return render(request,"home/service_page.html")
