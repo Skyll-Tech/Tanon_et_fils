@@ -1,10 +1,7 @@
-*.pyc
-__pycache__/
 
 # Fichiers Python à ignorer
 *.pyc
 __pycache__/
 
-# Python cache
-*.pyc
-__pycache__/
+.env/
+.env
